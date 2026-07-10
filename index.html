@@ -1,99 +1,469 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Potrends — Always in the Making</title>
+  <meta name="description" content="Potrends is thoughtfully reimagining the online experience. Collection enquiries, collaborations and conversations welcome." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    html, body {
+      height: 100%;
+      font-family: 'Inter', sans-serif;
+      font-weight: 300;
+      color: #f0ece4;
+      background: #0a0a0a;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+    }
 
-<title>Potrends</title>
+    /* ─── HERO ─── */
+    .hero {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      min-height: 600px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      padding: 2.4rem 3.2rem;
+    }
 
-<meta name="description" content="Potrends is an independent fashion studio rooted in storytelling, craftsmanship and contemporary African design.">
+    .hero-bg {
+      position: absolute;
+      inset: 0;
+      z-index: 0;
+    }
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    .hero-bg picture,
+    .hero-bg img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center 30%;
+    }
 
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      background: linear-gradient(
+        180deg,
+        rgba(0,0,0,0.55) 0%,
+        rgba(0,0,0,0.40) 40%,
+        rgba(0,0,0,0.65) 100%
+      );
+    }
 
-<link rel="stylesheet" href="style.css">
+    /* ─── HEADER ─── */
+    .header {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+    }
 
+    .logo {
+      width: 150px;
+      height: auto;
+      display: block;
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
+    }
+
+    .header-links {
+      display: flex;
+      gap: 1.6rem;
+      list-style: none;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .header-links a {
+      color: #f0ece4;
+      text-decoration: none;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+    }
+
+    .header-links a:hover { opacity: 1; }
+
+    /* ─── CENTER CONTENT ─── */
+    .center {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
+      transform: translateY(-5%);
+    }
+
+    .headline {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(3rem, 6.5vw, 5.5rem);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.1;
+      letter-spacing: -0.01em;
+      margin-bottom: 1.6rem;
+      color: #f0ece4;
+    }
+
+    .headline-line {
+      display: block;
+    }
+
+    .headline-line--indent {
+      padding-left: 1.2rem;
+    }
+
+    .body-copy {
+      font-size: clamp(0.9rem, 1.4vw, 1.1rem);
+      font-weight: 300;
+      line-height: 1.7;
+      opacity: 0.8;
+      max-width: 480px;
+      margin: 0 auto 2.4rem;
+    }
+
+    /* ─── EMAIL FORM ─── */
+    .signup-form {
+      display: flex;
+      gap: 0;
+      max-width: 400px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(240, 236, 228, 0.25);
+    }
+
+    .signup-form input {
+      flex: 1;
+      background: transparent;
+      border: none;
+      padding: 0.85rem 0;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.8rem;
+      font-weight: 300;
+      color: #f0ece4;
+      outline: none;
+      letter-spacing: 0.04em;
+    }
+
+    .signup-form input::placeholder {
+      color: rgba(240, 236, 228, 0.4);
+      font-weight: 300;
+      letter-spacing: 0.04em;
+    }
+
+    .signup-form button {
+      background: transparent;
+      border: none;
+      padding: 0.85rem 0 0.85rem 1.2rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.75rem;
+      font-weight: 400;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #f0ece4;
+      cursor: pointer;
+      opacity: 0.7;
+      transition: opacity 0.3s;
+      white-space: nowrap;
+    }
+
+    .signup-form button:hover { opacity: 1; }
+
+    .signup-form button:disabled {
+      opacity: 0.3;
+      cursor: not-allowed;
+    }
+
+    .form-message {
+      font-size: 0.75rem;
+      margin-top: 0.6rem;
+      min-height: 1.2em;
+      transition: opacity 0.3s;
+    }
+
+    .form-message.success { color: #8bc48a; opacity: 1; }
+    .form-message.error { color: #c48a8a; opacity: 1; }
+
+    /* ─── FOOTER ─── */
+    .footer {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      font-size: 0.7rem;
+      letter-spacing: 0.06em;
+      opacity: 0.6;
+    }
+
+    .footer-links {
+      display: flex;
+      gap: 1.4rem;
+      list-style: none;
+    }
+
+    .footer-links a {
+      color: #f0ece4;
+      text-decoration: none;
+      transition: opacity 0.3s;
+    }
+
+    .footer-links a:hover { opacity: 1; }
+
+    .footer-copy {
+      font-size: 0.65rem;
+      opacity: 0.5;
+    }
+
+    /* ─── MOBILE ─── */
+    @media (max-width: 768px) {
+      .hero {
+        padding: 1.6rem 1.6rem 1.4rem;
+        height: 100dvh;
+        min-height: 100dvh;
+        overflow-y: auto;
+        justify-content: flex-start;
+        gap: 0;
+      }
+
+      .hero-bg {
+        position: fixed;
+      }
+
+      .header {
+        flex-direction: column;
+        align-items: center;
+        gap: 1.2rem;
+        padding-top: 0.4rem;
+      }
+
+      .header-links {
+        display: none;
+      }
+
+      .center {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        transform: none;
+        padding: 2rem 0;
+      }
+
+      .headline {
+        font-size: 2.6rem;
+      }
+
+      .headline-line--indent {
+        padding-left: 0.6rem;
+      }
+
+      .body-copy {
+        font-size: 0.85rem;
+      }
+
+      .signup-form {
+        max-width: 100%;
+      }
+
+      .footer {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.8rem;
+        text-align: center;
+        padding-bottom: 0.2rem;
+      }
+
+      .footer-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero {
+        padding: 1.2rem 1.2rem 1rem;
+      }
+
+      .headline {
+        font-size: 2.2rem;
+      }
+
+      .body-copy {
+        font-size: 0.8rem;
+      }
+
+      .signup-form {
+        flex-direction: column;
+        border-bottom: none;
+        gap: 0.4rem;
+      }
+
+      .signup-form input {
+        border-bottom: 1px solid rgba(240, 236, 228, 0.25);
+        text-align: center;
+        padding: 0.7rem 0;
+      }
+
+      .signup-form button {
+        padding: 0.7rem 0;
+        text-align: center;
+        opacity: 0.9;
+      }
+    }
+
+    /* ─── DESKTOP HERO IMAGE ─── */
+    .hero-bg .hero-desktop {
+      display: block;
+    }
+
+    .hero-bg .hero-mobile {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-bg .hero-desktop {
+        display: none;
+      }
+
+      .hero-bg .hero-mobile {
+        display: block;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-<div class="overlay"></div>
+<section class="hero">
+  <div class="hero-bg">
+    <!-- Desktop image -->
+    <img class="hero-desktop" src="hero-desktop.jpg" alt="Potrends AW25 Collection — Backstage" loading="eager" />
+    <!-- Mobile image -->
+    <img class="hero-mobile" src="hero-mobile.jpg" alt="Potrends AW25 Collection — Backstage" loading="eager" />
+  </div>
+  <div class="hero-overlay"></div>
 
-<main class="content">
+  <!-- HEADER -->
+  <header class="header">
+    <img class="logo" src="logo.png" alt="Potrends" />
+    <ul class="header-links">
+      <li><a href="https://instagram.com/potrends" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="mailto:potrendclothing@gmail.com">Email</a></li>
+    </ul>
+  </header>
 
-<div class="logo">
+  <!-- CENTER -->
+  <div class="center">
+    <h1 class="headline">
+      <span class="headline-line">Always</span>
+      <span class="headline-line">in the</span>
+      <span class="headline-line headline-line--indent">Making.</span>
+    </h1>
+    <p class="body-copy">
+      We're thoughtfully reimagining the Potrends online experience.
+      While our digital home evolves, we're still welcoming collection
+      enquiries, collaborations and conversations.
+    </p>
 
-<img src="logo.png" alt="Potrends Logo">
+    <form class="signup-form" id="signup-form">
+      <input
+        type="email"
+        id="email-input"
+        placeholder="Your email address"
+        required
+        autocomplete="email"
+        aria-label="Email address"
+      />
+      <button type="submit" id="submit-btn">Notify Me</button>
+    </form>
+    <p class="form-message" id="form-message"></p>
+  </div>
 
-</div>
-
-<h1>
-Always<br>
-in the<br>
-Making.
-</h1>
-
-<p class="intro">
-
-We're thoughtfully reimagining the Potrends online experience while remaining available for <strong>collection enquiries, custom orders, wholesale enquiries and collaborations.</strong>
-
-</p>
-
-<section class="signup">
-
-<h2>Be the First to Know</h2>
-
-<form
-action="https://docs.google.com/forms/d/e/1FAIpQLSct6U7ekEffLfCfNaJ_ZHhsgKvvGbZVdkLRBqFkH5zazYcx5w/formResponse"
-method="POST"
-target="hidden_iframe"
-onsubmit="submitted=true;">
-
-<input
-type="email"
-name="entry.60306455"
-placeholder="Your email address"
-required>
-
-<button type="submit">
-Join →
-</button>
-
-</form>
-
-<iframe
-name="hidden_iframe"
-style="display:none;">
-</iframe>
-
+  <!-- FOOTER -->
+  <footer class="footer">
+    <ul class="footer-links">
+      <li><a href="https://instagram.com/potrends" target="_blank" rel="noopener">Instagram</a></li>
+      <li><a href="mailto:potrendclothing@gmail.com">Email</a></li>
+      <li><a href="https://wa.me/27828775530" target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a href="https://linkedin.com/company/potrends" target="_blank" rel="noopener">LinkedIn</a></li>
+    </ul>
+    <span class="footer-copy">&copy; Potrends</span>
+  </footer>
 </section>
 
-<footer>
+<script>
+  const form = document.getElementById('signup-form');
+  const input = document.getElementById('email-input');
+  const message = document.getElementById('form-message');
+  const submitBtn = document.getElementById('submit-btn');
 
-<a href="https://instagram.com/potrends" target="_blank">
-Instagram
-</a>
+  const GOOGLE_FORM_ACTION = 'https://docs.google.com/forms/d/e/1FAIpQLSct6U7ekEffLfCfNaJ_ZHhsgKvvGbZVdkLRBqFkH5zazYcx5w/formResponse';
+  const EMAIL_ENTRY_ID = 'entry.60306455';
 
-<a href="https://wa.me/27828775530" target="_blank">
-WhatsApp
-</a>
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const email = input.value.trim();
 
-<a href="mailto:potrendclothing@gmail.com">
-Email
-</a>
+    if (!email) {
+      message.textContent = 'Please enter your email address.';
+      message.className = 'form-message error';
+      return;
+    }
 
-<p class="copyright">
-© Potrends
-</p>
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      message.textContent = 'Please enter a valid email address.';
+      message.className = 'form-message error';
+      return;
+    }
 
-</footer>
+    submitBtn.disabled = true;
+    submitBtn.textContent = 'Sending…';
+    message.textContent = '';
+    message.className = 'form-message';
 
-</main>
+    try {
+      const body = new URLSearchParams();
+      body.append(EMAIL_ENTRY_ID, email);
 
-<script src="script.js"></script>
+      await fetch(GOOGLE_FORM_ACTION, {
+        method: 'POST',
+        mode: 'no-cors',
+        body: body
+      });
+
+      message.textContent = 'Thank you. We\'ll be in touch.';
+      message.className = 'form-message success';
+      input.value = '';
+
+      setTimeout(() => {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Notify Me';
+      }, 1000);
+
+      setTimeout(() => {
+        message.textContent = '';
+        message.className = 'form-message';
+      }, 6000);
+
+    } catch (err) {
+      message.textContent = 'Something went wrong. Please try again.';
+      message.className = 'form-message error';
+      submitBtn.disabled = false;
+      submitBtn.textContent = 'Notify Me';
+    }
+  });
+</script>
 
 </body>
 </html>
