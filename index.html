@@ -7,7 +7,7 @@
   <meta name="description" content="Potrends is thoughtfully reimagining the online experience. Collection enquiries, collaborations and conversations welcome." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
@@ -40,6 +40,7 @@
       z-index: 0;
     }
 
+    .hero-bg picture,
     .hero-bg img {
       width: 100%;
       height: 100%;
@@ -69,10 +70,10 @@
     }
 
     .logo {
-      width: 110px;
+      width: 150px;
       height: auto;
       display: block;
-      filter: invert(1) brightness(2);
+      filter: drop-shadow(0 0 8px rgba(255,255,255,0.15));
     }
 
     .header-links {
@@ -98,16 +99,18 @@
     .center {
       position: relative;
       z-index: 2;
-      max-width: 560px;
-      text-align: left;
+      max-width: 640px;
+      margin: 0 auto;
+      text-align: center;
       transform: translateY(-5%);
     }
 
     .headline {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Playfair Display', serif;
       font-size: clamp(3rem, 6.5vw, 5.5rem);
-      font-weight: 300;
-      line-height: 1.05;
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.1;
       letter-spacing: -0.01em;
       margin-bottom: 1.6rem;
       color: #f0ece4;
@@ -122,69 +125,62 @@
     }
 
     .body-copy {
-      font-size: clamp(0.95rem, 1.4vw, 1.15rem);
+      font-size: clamp(0.9rem, 1.4vw, 1.1rem);
       font-weight: 300;
-      line-height: 1.8;
+      line-height: 1.7;
       opacity: 0.8;
-      max-width: 460px;
-      margin: 0 0 2.4rem;
+      max-width: 480px;
+      margin: 0 auto 2.4rem;
     }
 
     /* ─── EMAIL FORM ─── */
     .signup-form {
       display: flex;
-      gap: 0.6rem;
-      max-width: 420px;
+      gap: 0;
+      max-width: 400px;
+      margin: 0 auto;
+      border-bottom: 1px solid rgba(240, 236, 228, 0.25);
     }
 
     .signup-form input {
       flex: 1;
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(240, 236, 228, 0.3);
-      border-radius: 2px;
-      padding: 0.85rem 1rem;
+      background: transparent;
+      border: none;
+      padding: 0.85rem 0;
       font-family: 'Inter', sans-serif;
       font-size: 0.8rem;
       font-weight: 300;
       color: #f0ece4;
       outline: none;
       letter-spacing: 0.04em;
-      transition: border-color 0.3s, background 0.3s;
-    }
-
-    .signup-form input:focus {
-      border-color: rgba(240, 236, 228, 0.6);
-      background: rgba(255, 255, 255, 0.12);
     }
 
     .signup-form input::placeholder {
-      color: rgba(240, 236, 228, 0.5);
+      color: rgba(240, 236, 228, 0.4);
       font-weight: 300;
       letter-spacing: 0.04em;
     }
 
     .signup-form button {
-      background: #f0ece4;
+      background: transparent;
       border: none;
-      border-radius: 2px;
-      padding: 0.85rem 1.6rem;
+      padding: 0.85rem 0 0.85rem 1.2rem;
       font-family: 'Inter', sans-serif;
       font-size: 0.75rem;
       font-weight: 400;
       letter-spacing: 0.12em;
       text-transform: uppercase;
-      color: #0a0a0a;
+      color: #f0ece4;
       cursor: pointer;
-      transition: background 0.3s;
+      opacity: 0.7;
+      transition: opacity 0.3s;
       white-space: nowrap;
     }
 
-    .signup-form button:hover {
-      background: #ffffff;
-    }
+    .signup-form button:hover { opacity: 1; }
 
     .signup-form button:disabled {
-      opacity: 0.5;
+      opacity: 0.3;
       cursor: not-allowed;
     }
 
@@ -229,15 +225,6 @@
       opacity: 0.5;
     }
 
-    /* ─── DESKTOP HERO IMAGE ─── */
-    .hero-bg .hero-desktop {
-      display: block;
-    }
-
-    .hero-bg .hero-mobile {
-      display: none;
-    }
-
     /* ─── MOBILE ─── */
     @media (max-width: 768px) {
       .hero {
@@ -255,7 +242,7 @@
 
       .header {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 1.2rem;
         padding-top: 0.4rem;
       }
@@ -274,7 +261,7 @@
       }
 
       .headline {
-        font-size: 2.8rem;
+        font-size: 2.6rem;
       }
 
       .headline-line--indent {
@@ -282,7 +269,7 @@
       }
 
       .body-copy {
-        font-size: 0.95rem;
+        font-size: 0.85rem;
       }
 
       .signup-form {
@@ -291,22 +278,16 @@
 
       .footer {
         flex-direction: column;
-        align-items: flex-start;
+        align-items: center;
         gap: 0.8rem;
+        text-align: center;
         padding-bottom: 0.2rem;
       }
 
       .footer-links {
         gap: 1rem;
         flex-wrap: wrap;
-      }
-
-      .hero-bg .hero-desktop {
-        display: none;
-      }
-
-      .hero-bg .hero-mobile {
-        display: block;
+        justify-content: center;
       }
     }
 
@@ -319,17 +300,45 @@
         font-size: 2.2rem;
       }
 
+      .body-copy {
+        font-size: 0.8rem;
+      }
+
       .signup-form {
         flex-direction: column;
+        border-bottom: none;
+        gap: 0.4rem;
       }
 
       .signup-form input {
-        text-align: left;
-        padding: 0.8rem 1rem;
+        border-bottom: 1px solid rgba(240, 236, 228, 0.25);
+        text-align: center;
+        padding: 0.7rem 0;
       }
 
       .signup-form button {
-        padding: 0.8rem 1.6rem;
+        padding: 0.7rem 0;
+        text-align: center;
+        opacity: 0.9;
+      }
+    }
+
+    /* ─── DESKTOP HERO IMAGE ─── */
+    .hero-bg .hero-desktop {
+      display: block;
+    }
+
+    .hero-bg .hero-mobile {
+      display: none;
+    }
+
+    @media (max-width: 768px) {
+      .hero-bg .hero-desktop {
+        display: none;
+      }
+
+      .hero-bg .hero-mobile {
+        display: block;
       }
     }
   </style>
@@ -338,7 +347,9 @@
 
 <section class="hero">
   <div class="hero-bg">
+    <!-- Desktop image -->
     <img class="hero-desktop" src="hero-desktop.jpg" alt="Potrends AW25 Collection — Backstage" loading="eager" />
+    <!-- Mobile image -->
     <img class="hero-mobile" src="hero-mobile.jpg" alt="Potrends AW25 Collection — Backstage" loading="eager" />
   </div>
   <div class="hero-overlay"></div>
@@ -356,7 +367,8 @@
   <div class="center">
     <h1 class="headline">
       <span class="headline-line">Always</span>
-      <span class="headline-line headline-line--indent">in the Making.</span>
+      <span class="headline-line">in the</span>
+      <span class="headline-line headline-line--indent">Making.</span>
     </h1>
     <p class="body-copy">
       We're thoughtfully reimagining the Potrends online experience.
@@ -384,8 +396,9 @@
       <li><a href="https://instagram.com/potrends" target="_blank" rel="noopener">Instagram</a></li>
       <li><a href="mailto:potrendclothing@gmail.com">Email</a></li>
       <li><a href="https://wa.me/27828775530" target="_blank" rel="noopener">WhatsApp</a></li>
+      <li><a href="https://linkedin.com/company/potrends" target="_blank" rel="noopener">LinkedIn</a></li>
     </ul>
-    <span class="footer-copy">&copy; POTRENDS</span>
+    <span class="footer-copy">&copy; Potrends</span>
   </footer>
 </section>
 
